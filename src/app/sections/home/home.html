@@ -1,0 +1,15 @@
+<section id="home">
+
+	<div class="toolbar">
+		<form ng-submit="submit()">
+			<input type="text" ng-model="text" name="text" />
+			<input type="submit" id="submit" value="Go" />
+		</form>
+	</div>
+
+	<div class="screen" ng-repeat="size in sizes" data-title="{{size.name}}" style="width: {{size.width / size.zoom}}px; height: {{size.height / size.zoom}}px">
+		<iframe ng-src="{{screen.url}}"></iframe>
+	</div>
+
+
+</section>

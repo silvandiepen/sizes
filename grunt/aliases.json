@@ -1,0 +1,36 @@
+{
+	"default": [
+		"notify",
+		"dev",
+		"browserSync",
+		"watch"
+	],
+	"standard":[
+		"jshint:src",
+		"clean",
+		"browserify",
+		"copy:jsmodule",
+		"copy:html",
+		"copy:images",
+		"copy:fonts"
+	],
+	"dev": [
+		"jsbeautifier",
+		"standard",
+		"sass:dev",
+		"htmlbuild:dev",
+		"tinypng",
+		"ngtemplates:dev",
+		"postcss"
+	],
+	"dist": [
+		"standard",
+		"sass:dist",
+		"htmlbuild:dist",
+		"ngtemplates:dist",
+		"postcss",
+		"cssnano",
+		"uglify",
+		"cacheBust"
+	]
+}

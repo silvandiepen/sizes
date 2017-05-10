@@ -1,0 +1,30 @@
+
+@function elementCount($end){
+  $elements: ();
+  @for $i from 1 through $end{
+      $element: '&:nth-child(#{$i}):nth-last-child(#{(($end + 1) - $i)}),';
+      $elements: prepend($element,$elements);
+  }
+  @return $elements;
+}
+
+
+@mixin createElements($amount,$type: false, $margin: false){
+  @for $i from 1 through $amount{
+    @if $type == false{
+      #{elementCount($i)}{
+        @content;
+      }
+    } @else if $type == 'width'{
+      @if $margin{
+        #{elementCount($i)}{
+          @include calc('width','#{percentage(1/$i)} - #{$margin}');
+        }
+      } @else {
+        #{elementCount($i)}{
+         width: percentage(1/$i);
+        }
+      }
+    }
+  }
+}

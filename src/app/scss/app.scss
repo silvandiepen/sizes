@@ -1,0 +1,57 @@
+
+
+// main styles
+@import
+  "functions/functions",
+  "mixins/mixins",
+  "color/color",
+	"base",
+	"grid/grid",
+  "typography",
+  "icons",
+  "slick";
+@import
+  "elements/elements",
+  "components/components";
+
+
+
+body{
+	background-color: color(Black,0.8); overflow: auto; white-space: nowrap;
+}
+
+.toolbar{
+	text-align: center; position: fixed; top: 0; width: 100%; background-color: color(Black); padding: 1rem;
+}
+
+.screen{
+	transition: $transition $bezier; display: inline-block; background: #cccccc; margin: 100px; position: absolute; box-shadow: 0 0 0.5rem 0 color(Black,0.5); top: 50%; transform: translateY(-50%); border-radius: 4px;
+	&:before{
+		color: color(White); position: absolute; top: 0; left: 0; transform: translateY(-100%); padding: 1rem; font-family: sans-serif; content: attr(data-title);
+	}
+	iframe{
+		top: 0; left: 0; position: absolute; width: 100%; height: 100%; border: none;
+	}
+	@for $i from 1 through 10{
+		&:nth-child(#{$i}){
+			$margin: $i*20; margin-top: #{$margin}px; margin-left: #{$margin}px; z-index: 100 - $i;
+		}
+	}
+}
+
+
+form{
+	display: inline-block; width: auto; font-size: 0; margin: auto;
+	input{
+		display: inline-block; height: 2rem; border: none; font-size: rem(14); line-height: 1rem; padding: 0.5rem ; border: none;
+		&[type="submit"]{
+			font-weight: $font-bold; background-color: color(Purple); color: color(White);
+		}
+		&:first-child{
+			border-radius: 4px 0 0 4px;
+		}
+		&:last-child{
+			border-radius: 0 4px 4px 0;
+		}
+	}
+}
